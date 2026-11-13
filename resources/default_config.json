@@ -1,0 +1,68 @@
+{
+  // 按键设置
+  "keys": {
+    "toggle_fishing": "f11",    // 开始/停止钓鱼
+    "cast": "1",                 // 甩竿按键
+    "destroy_fish": "",          // 销毁劣质鱼（可选，为空表示不启用）
+    "macro": "",                 // 一键宏（可选，用于自动上饵/收鱼）
+    "bait": "5"                  // 上鱼饵按键
+  },
+  
+  // 检测参数
+  "detection": {
+    "yolo_conf": 0.5,            // YOLO置信度阈值（鱼漂位置检测）
+    "bite_threshold": 40,        // 咬钩检测：像素差异阈值（0-255）
+    "bite_trigger_ratio": 0.02, // 咬钩检测：像素变化触发比例（2%）
+    "bite_min_ratio": 0.00001,   // 咬钩检测：最小记录比例（0.001%，用于调试打印）
+    "consecutive_frames": 1,     // 连续检测帧数（达到此帧数才认为咬钩）
+    "search_timeout": 5,         // 寻找鱼漂超时时间（秒）
+    "max_wait_time": 20          // 最大等待咬钩时间（秒）
+  },
+  
+  // 防检测设置
+  "anti_detection": {
+    "enabled": true,             // 是否启用防检测功能
+    "random_jump": true,         // 是否随机跳跃
+    "jump_chance": 8,            // 跳跃概率（百分比，8表示8%概率跳跃）
+    "random_delay": true,        // 是否添加随机延迟
+    "delay_min": 0.5,            // 随机延迟最小值（秒）
+    "delay_max": 2.0,            // 随机延迟最大值（秒）
+    "mouse_flee": true,          // 检测时是否移开鼠标（避免遮挡）
+    "auto_close": false,         // 是否到时退出钓鱼程序
+    "close_after_minutes": 100   // 自动关闭时间（分钟，auto_close为true时生效）
+  },
+  
+  // 上鱼饵设置
+  "bait": {
+    "enabled": true,             // 是否启用自动上饵
+    "interval_minutes": 10       // 上饵间隔时间（分钟）
+  },
+  
+  // 窗口检测设置
+  "window": {
+    "enabled": true,             // 是否启用窗口检测（Windows/macOS）
+    "title_contains": "魔兽世界", // 窗口标题包含的关键词
+    "owner_name": "Wow",         // 窗口所属进程名
+    "manual_offset": null,       // 手动校准偏移（null表示自动检测）
+    "border_top": 28,            // 窗口顶部边框高度（标题栏）
+    "border_left": 0,            // 窗口左边框宽度
+    "border_right": 0,           // 窗口右边框宽度
+    "border_bottom": 0           // 窗口底部边框高度
+  },
+  
+  // 其他设置
+  "general": {
+    "loop_delay": 1,             // 收杆后等待时间（秒）
+    "debug_mode": false,         // 调试模式（启用后会保存更多日志）
+    "save_screenshots": true,   // 是否保存推理原图、预测标注和模型版本
+    "screenshot_dir": "output"   // 截图保存目录
+  },
+  
+  // 日志设置
+  "logging": {
+    "enabled": true,             // 是否启用文件日志
+    "level": "info",             // 日志级别：debug, info, warning, error
+    "log_dir": "logs",           // 日志保存目录
+    "max_files": 7               // 保留最近几天的日志文件
+  }
+}

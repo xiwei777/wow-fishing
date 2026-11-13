@@ -1,0 +1,16 @@
+*.pt
+*.onnx
+*.zip
+*.tar.gz
+models/
+dataset*/
+output/
+logs/
+build/
+dist/
+release/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+config.json

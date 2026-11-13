@@ -1,0 +1,14 @@
+# Python 3.10；发布版使用 CPU 推理，Windows 不要求安装 CUDA。
+ultralytics==8.4.21
+numpy==1.26.4
+opencv-python==4.10.0.84
+Pillow==12.1.1
+PyAutoGUI==0.9.54
+pynput==1.8.1
+# PyTorch 2.2.2 是 Intel macOS 单独使用的兼容版本。
+torch==2.2.2; sys_platform == 'darwin' and platform_machine == 'x86_64'
+torchvision==0.17.2; sys_platform == 'darwin' and platform_machine == 'x86_64'
+torch==2.10.0; sys_platform != 'darwin' or platform_machine != 'x86_64'
+torchvision==0.25.0; sys_platform != 'darwin' or platform_machine != 'x86_64'
+pyobjc-framework-Quartz==12.1; sys_platform == 'darwin'
+pyobjc-framework-Cocoa==12.1; sys_platform == 'darwin'
