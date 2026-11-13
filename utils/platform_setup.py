@@ -5,6 +5,10 @@ import sys
 
 def setup_dpi_awareness():
     """打包程序使用 manifest；源码运行时尽早设置 Per Monitor V2。"""
+    # Windows 重定向日志时可能默认 cp1252，中文和 Emoji 不能导致程序崩溃。
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, 'reconfigure'):
+            stream.reconfigure(encoding='utf-8', errors='backslashreplace')
     if sys.platform != "win32":
         return
     import ctypes

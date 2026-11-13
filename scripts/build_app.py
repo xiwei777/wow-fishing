@@ -79,11 +79,8 @@ exe = EXE(pyz, a.scripts, a.binaries, a.datas, [], name='WoWFishing',
                     '--distpath', str(destination), '--workpath', str(stage / 'work'), str(spec_path)], check=True, cwd=ROOT)
     app = destination / ('WoWFishing.app' if mac else 'WoWFishing.exe')
     if mac:
-        # 本机文件复制可能带 Finder 元数据，必须清除后重新完成本地签名。
-        # 只处理生成的应用，不修改源文件或系统的隔离属性。
-        for attribute in ('com.apple.FinderInfo', 'com.apple.ResourceFork'):
-            subprocess.run(['xattr', '-r', '-d', attribute, str(app)],
-                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        # 仅清理刚在本机生成的包的扩展属性，随后重新签名；不修改下载应用或源文件。
+        subprocess.run(['/usr/bin/xattr', '-cr', str(app)], check=True)
         subprocess.run(['codesign', '--force', '--deep', '--sign', '-', '--timestamp=none', str(app)], check=True)
         subprocess.run(['codesign', '--verify', '--deep', '--strict', str(app)], check=True)
     executable = app / 'Contents/MacOS/WoWFishing' if mac else app
